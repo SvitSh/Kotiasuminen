@@ -10,10 +10,9 @@
 // ================================================
 
 // Telegram-botin tunniste (saatu BotFatherilta)
-const TELEGRAM_BOT_TOKEN = "8665751014:AAEqF-lIVtDDTU6AHKeftEhQva6GZMcBLiY";
 
-// Telegram-ryhmän tunniste (alkaa miinusmerkillä ryhmille)
-const TELEGRAM_CHAT_ID = "-5112241074";
+
+
 
 // Google Sheets -välilehden nimi johon tiedot tallennetaan
 const SHEET_NAME = "Soittopyynnot";
