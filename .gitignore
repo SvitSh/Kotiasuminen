@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+.history/
+
+# Temporary files
+*.log
+*.tmp
+
+# Node / npm (на будущее, не мешает)
+node_modules/
+
+# Environment variables
+.env

@@ -1,0 +1,1954 @@
+/* ================================================
+   Google Fonts: Inter (body) + Montserrat (otsikot)
+   Inter: normaalit tekstit, napit, navigaatio
+   Montserrat: h1-h2 otsikot
+================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap");
+
+/* ================================================
+   CSS-MUUTTUJAT (Design tokens)
+   Värit, tilat, varjot ja koot yhteen paikkaan.
+   Muuta tästä → päivittyy kaikkialle.
+================================================ */
+:root {
+  --bg: #ffffff;
+  --text: #0f1b14;
+  --muted: #405149;
+  --accent: #1f7a4a;       /* Pääväri: vihreä */
+  --accent-2: #155a38;     /* Tumma vihreä: hover-tila */
+  --border: #dbe6df;
+  --card: #ffffff;
+  --soft: #f4faf6;         /* Vaalea taustasävy osioille */
+  --shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  --radius: 18px;
+  --radius-lg: 24px;
+  --container: 1240px;     /* Maksimileveys sisällölle */
+  --gutter: 24px;          /* Sivumarginaali */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 56px;         /* Osioiden välinen tila */
+  --focus: 3px solid rgba(31, 122, 74, 0.35);
+}
+
+/* Pienillä näytöillä pienemmät marginaalit */
+@media (max-width: 520px) {
+  :root {
+    --gutter: 16px;
+    --space-6: 44px;
+  }
+}
+
+/* ================================================
+   PERUSTYYLIT
+================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Pehmeä vieritys ankkurilinkeissä */
+}
+
+/* ================================================
+   TYPOGRAFIAJÄRJESTELMÄ
+   Body: Inter
+   h1-h2: Montserrat (pääotsikot)
+   h3-h6: Inter bold (kortit, alaotsikot)
+
+   Koot:
+   h1 hero:    clamp(30px, 4vw, 56px) / 900
+   h2 osio:    clamp(26px, 3vw, 40px) / 800
+   h3 kortti:  18-20px / 700
+   alaotsikko: clamp(16px, 2vw, 22px) / 600
+   teksti:     16px / 400
+   pieni:      14px / 400
+   nav:        13-15px / 600
+================================================ */
+body {
+  margin: 0;
+  font-family:
+    "Inter", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+/* Pääotsikot: Montserrat */
+h1,
+h2 {
+  font-family:
+    "Montserrat", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+/* Alaotsikot: Inter bold */
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    "Inter", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Sisältöalue: maksimileveys + automaattiset marginaalit */
+.container {
+  width: min(var(--container), calc(100% - (var(--gutter) * 2)));
+  margin-inline: auto;
+}
+
+/* Estää sivun vierittämisen kun modaali on auki */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Saavutettavuus: näppäimistöhyppy pääsisältöön */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  padding: 10px 12px;
+  border-radius: 12px;
+  z-index: 999999;
+}
+
+.skip-link:focus {
+  left: 12px;
+  outline: var(--focus);
+}
+
+/* Fokustyyli näppäimistökäyttäjille */
+:focus-visible {
+  outline: var(--focus);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* ================================================
+   NAPIT (BUTTONS)
+   .btn = vihreä pyöreä nappi
+   .btn--lg = isompi versio
+   .btn--header-cta = ylätunnisteessa oleva nappi
+================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  min-width: 220px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition:
+    transform 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.btn:hover {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: #fff;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--lg {
+  min-height: 54px;
+  min-width: 220px;
+  padding: 14px 24px;
+  font-size: 17px;
+}
+
+/* Napissa oleva ikoni */
+.btn__icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: block;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Täytetty ikoni (esim. WhatsApp) */
+.btn__icon--fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* Pakollinen kenttä -merkki (*) */
+.required {
+  color: #c2473d;
+  margin-left: 2px;
+  font-weight: 700;
+}
+
+/* ================================================
+   YLÄTUNNISTE (HEADER)
+   Kiinteä palkki sivun yläreunassa (sticky).
+   Katoaa mobiilissa: nav, puhelin, cta-nappi
+================================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.header__top {
+  border-bottom: 1px solid var(--border);
+}
+
+.header__top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 24px;
+}
+
+/* Brändi: logo + nimi + tagline */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.brand__logo {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.brand__text {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.02;
+  min-width: 0;
+}
+
+.brand__name {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+/* Tagline venytetään logon leveydelle */
+.brand__tagline {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  text-align: justify;
+  text-align-last: justify;
+  width: 100%;
+}
+
+/* Puhelinnumero keskellä ylätunnistetta */
+.header__phone {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.header__phone:hover {
+  color: var(--accent);
+}
+
+.header__top-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* Soittopyyntö-nappi ylätunnisteessa */
+.btn--header-cta {
+  min-width: 310px;
+  min-height: 58px;
+  padding: 16px 26px;
+  font-size: 17px;
+  font-weight: 800;
+  box-shadow: 0 10px 20px rgba(31, 122, 74, 0.16);
+}
+
+/* Navigaatiopalkki: 6 tasalevyistä linkkiä */
+.header__nav-bar {
+  background: #fff;
+}
+
+.header__nav-bar .container {
+  display: flex;
+  justify-content: stretch;
+}
+
+.nav {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 tasalevyistä saraketta */
+  align-items: stretch;
+  gap: 2px;
+  padding: 8px 0;
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--muted);
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
+  transition: background 120ms, border-color 120ms, color 120ms;
+}
+
+.nav__link:hover {
+  color: var(--text);
+  border-color: rgba(31, 122, 74, 0.22);
+  background: rgba(31, 122, 74, 0.06);
+}
+
+/* Nykyinen sivu korostetaan vihreällä */
+.nav__link[aria-current="page"] {
+  color: var(--accent);
+  border-color: rgba(31, 122, 74, 0.3);
+  background: rgba(31, 122, 74, 0.08);
+  font-weight: 800;
+}
+
+/* Hampurilaisnappi mobiilille */
+.burger {
+  display: none;
+  width: 58px;
+  height: 58px;
+  border-radius: 20px;
+  border: 2px solid rgba(31, 122, 74, 0.25);
+  background: rgba(31, 122, 74, 0.08);
+  cursor: pointer;
+  position: relative;
+  z-index: 600;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.burger:hover {
+  background: rgba(31, 122, 74, 0.12);
+  border-color: rgba(31, 122, 74, 0.35);
+}
+
+.burger__line {
+  width: 24px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--accent);
+  display: block;
+}
+
+/* Pienemmät fontit 1180px leveydellä */
+@media (max-width: 1180px) {
+  .brand__name { font-size: 26px; }
+  .brand__tagline { font-size: 13px; }
+  .header__phone { font-size: 18px; }
+  .btn--header-cta { min-width: 270px; }
+}
+
+/* Mobiili: piilotetaan navigaatio, puhelin ja cta-nappi */
+@media (max-width: 860px) {
+  .header__nav-bar,
+  .header__phone,
+  .btn--header-cta {
+    display: none;
+  }
+  .burger { display: inline-flex; }
+  .header__top-inner { padding: 12px 0; }
+  .brand__logo { width: 62px; height: 62px; }
+  .brand__text { display: none; }
+}
+
+@media (max-width: 520px) {
+  .brand__logo { width: 56px; height: 56px; }
+  .burger { width: 54px; height: 54px; border-radius: 18px; }
+}
+
+/* ================================================
+   HERO-OSIO
+   Kuvakaruselli tekstillä vasemmalla, kuvalla oikealla.
+   Mobiilissa pino ylhäältä alas.
+================================================ */
+.hero {
+  background:
+    radial-gradient(900px 380px at 10% 0%, rgba(31, 122, 74, 0.1), transparent 60%),
+    radial-gradient(900px 380px at 90% 0%, rgba(31, 122, 74, 0.06), transparent 60%);
+  padding: var(--space-6) 0 34px;
+}
+
+.hero__grid {
+  display: grid;
+  gap: 26px;
+  align-items: start;
+  position: relative;
+}
+
+/* Desktop: 2 saraketta */
+@media (min-width: 960px) {
+  .hero__grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-areas:
+      "content media"
+      "dots dots"
+      "cta cta";
+    column-gap: 56px;
+    row-gap: 22px;
+    align-items: stretch;
+  }
+}
+
+/* Vasemman sarakkeen sisältö: teksti + nappi */
+.hero__content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 12px 0;
+}
+
+/* Oikean sarakkeen kuva */
+.hero__media {
+  grid-area: media;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #fff;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+/* Navigaatiopisteet karusellin alla */
+.hero__dots {
+  grid-area: dots;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Yhteydenottonapit (WhatsApp, Soita, Viesti) */
+.hero__cta {
+  grid-area: cta;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Yksittäinen slide: piilotettu oletuksena */
+.hero__slide {
+  display: none;
+}
+
+/* Aktiivinen slide */
+.hero__slide.is-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  animation: heroFade 0.35s ease;
+}
+
+@keyframes heroFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hero-pääotsikko */
+.hero__title {
+  font-size: clamp(30px, 4vw, 56px);
+  line-height: 1.08;
+  margin: 0 0 var(--space-3);
+  font-weight: 900;
+  color: var(--text);
+  max-width: 100%;
+}
+
+/* Hero-alaotsikko vihreällä */
+.hero__sub {
+  font-size: clamp(16px, 2vw, 22px);
+  margin: 0 0 var(--space-3);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.45;
+  max-width: 100%;
+}
+
+.hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.hero__primaryCta {
+  margin-bottom: 6px;
+}
+
+/* Päänappi: leveämpi ja korkeampi */
+.btn--hero-main {
+  min-width: 340px;
+  min-height: 60px;
+  box-shadow: 0 12px 24px rgba(31, 122, 74, 0.18);
+}
+
+/* Huomioteksti napin alla (✓ Soitamme takaisin...) */
+.hero__note {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero__note::before {
+  content: "✓";
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* Taustasilmukuva */
+.hero__img {
+  width: 100%;
+  min-height: 260px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: none;
+}
+
+.hero__img.is-active {
+  display: block;
+  animation: heroFade 0.35s ease;
+}
+
+/* Desktop: korkeat kuvat */
+@media (min-width: 960px) {
+  .hero__content,
+  .hero__img { min-height: 460px; }
+}
+
+/* Karusellin navigaatiopiste */
+.hero__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c8ddd0;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+  opacity: 0.9;
+}
+
+.hero__dot.is-active {
+  background: var(--accent);
+  transform: scale(1.12);
+  opacity: 1;
+}
+
+/* Yhteydenottonapit (kaikki vihreät) */
+.hero__action {
+  min-width: 200px;
+  min-height: 54px;
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  font-size: 17px;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.hero__action--solid {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.hero__action:hover {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.hero__action--solid:hover {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: #fff;
+}
+
+/* Ankkurit: kompensoi kiinteän ylätunnistepalkin korkeus */
+#meista,
+#palvelut,
+#miten,
+#hinnasto,
+#yhteys {
+  scroll-margin-top: 130px;
+}
+
+/* Tabletti: yksi sarake */
+@media (max-width: 959px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "content" "media" "dots" "cta";
+  }
+}
+
+/* Puhelin: keskitys + pienempi kuva */
+@media (max-width: 640px) {
+  .hero__grid { gap: 20px; }
+
+  .hero__content {
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .hero__title { font-size: 30px; line-height: 1.08; max-width: 100%; }
+  .hero__sub { font-size: 17px; line-height: 1.55; max-width: 100%; }
+  .hero__trust { justify-content: center; font-size: 14px; }
+
+  .hero__primaryCta {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btn--hero-main { min-width: 100%; }
+  .hero__note { justify-content: center; }
+
+  /* Kuva: koko näyttö, ei valkoisia reunoja */
+  .hero__img {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Pienet napit kolmelle toiminnolle rinnakkain */
+  .hero__action {
+    min-width: 0;
+    width: auto;
+    flex: 1 1 0;
+    padding: 12px 8px;
+    font-size: 12px;
+    min-height: 48px;
+    gap: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .hero__action .btn__icon { width: 16px; height: 16px; flex: 0 0 16px; }
+}
+
+/* ================================================
+   MIKSI VALITA KOTIASUMINEN
+   3 korttia vihreillä gallukoilla.
+   Mobiilissa 1 sarake, desktopissa 3 saraketta.
+================================================ */
+.benefits {
+  padding: var(--space-6) 0;
+}
+
+.benefits__grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 960px) {
+  .benefits__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.benefitCard {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  padding: 18px 20px;
+}
+
+.benefitCard__icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(31, 122, 74, 0.08);
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+/* Otsikkorivi: gallukka + otsikko vierekkäin */
+.benefitCard__titleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+/* Vihreä ympyrä valkoisella gallukalla */
+.benefitCard__check {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.benefitCard__check svg {
+  width: 13px;
+  height: 13px;
+}
+
+.benefitCard__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Teksti sisennetty gallukan leveyden verran */
+.benefitCard__text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  padding-left: 38px;
+}
+
+/* ================================================
+   OSIOIDEN OTSIKOT
+================================================ */
+.section-title {
+  font-size: clamp(26px, 3vw, 40px);
+  margin: 0 0 var(--space-2);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.section-subtitle {
+  margin: 0 0 var(--space-5);
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.5;
+  max-width: 60ch;
+}
+
+/* ================================================
+   MEISTÄ-OSIO
+   Kuva vasemmalla, teksti oikealla.
+================================================ */
+.about {
+  padding: var(--space-6) 0;
+  background: var(--soft);
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 42px;
+  align-items: center;
+}
+
+.about__media img {
+  width: 100%;
+  height: 580px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  object-position: top;
+}
+
+.about__content {
+  max-width: 780px;
+}
+
+.about__content p {
+  margin: 0 0 18px;
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.about__content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.about__cta {
+  margin-top: 40px;
+}
+
+@media (max-width: 920px) {
+  .about__grid { grid-template-columns: 280px 1fr; gap: 28px; align-items: start; }
+  .about__media img { height: 340px; }
+  .about__content p { font-size: 18px; line-height: 1.7; }
+}
+
+@media (max-width: 720px) {
+  .about__grid { grid-template-columns: 1fr; gap: 22px; text-align: left; }
+  .about__media { max-width: 320px; width: 100%; margin: 0 auto; }
+  .about__media img { height: 320px; }
+  .about__content { max-width: 100%; }
+  .about__content p { font-size: 17px; line-height: 1.65; }
+  .about__cta { display: flex; justify-content: center; margin-top: 32px; }
+}
+
+/* ================================================
+   PALVELUT
+   2x2 kortteja kuvilla.
+   Mobiilissa 1 sarake, muuten 2 saraketta.
+================================================ */
+.services {
+  padding: var(--space-6) 0;
+}
+
+.services__grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.serviceCard {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.05);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.08);
+}
+
+.serviceCard__media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #f2f6f4;
+}
+
+.serviceCard__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.serviceCard__body {
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.serviceCard__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.serviceCard__text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* Hintaviittaus katkoviivan yläpuolella */
+.serviceCard__price {
+  margin-top: auto;
+  padding-top: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--accent);
+  border-top: 1px dashed var(--border);
+}
+
+/* ================================================
+   MITEN SE TOIMII
+   3 numerosteppiä rinnakkain.
+   Mobiilissa peräkkäin.
+================================================ */
+.steps {
+  padding: var(--space-6) 0;
+  background: var(--soft);
+}
+
+.steps__grid {
+  display: flex;
+  gap: var(--space-5);
+}
+
+.step {
+  flex: 1;
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.step__number {
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: var(--space-2);
+}
+
+.step__title {
+  margin: 0 0 var(--space-2);
+  font-size: 18px;
+}
+
+.step__text {
+  margin: 0;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+@media (max-width: 920px) {
+  .steps__grid { flex-direction: column; }
+}
+
+/* ================================================
+   HINNASTO
+   Taulukko desktopissa.
+   Mobiilissa muuttuu korteiksi (CSS grid).
+================================================ */
+.pricing {
+  padding: var(--space-6) 0;
+  background: var(--bg);
+}
+
+.pricing__tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pricing__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 400px;
+}
+
+.pricing__table th,
+.pricing__table td {
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.pricing__table th {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 800;
+  background: rgba(31, 122, 74, 0.06);
+}
+
+.pricing__table td:first-child {
+  font-weight: 600;
+}
+
+/* Mobiili: taulukko → kortit */
+@media (max-width: 600px) {
+  .pricing__tableWrap {
+    overflow-x: visible;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .pricing__table { display: block; min-width: 0; }
+  .pricing__table thead { display: none; }
+
+  .pricing__table tbody { display: grid; gap: 12px; }
+
+  .pricing__table tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .pricing__table td { padding: 12px 14px; border-bottom: none; font-size: 15px; }
+
+  /* Palvelun nimi koko leveyteen */
+  .pricing__table td:first-child {
+    grid-column: 1 / -1;
+    font-size: 16px;
+    font-weight: 800;
+    background: rgba(31, 122, 74, 0.06);
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ALV-otsikot CSS:llä, ei HTML:llä */
+  .pricing__table td:nth-child(2)::before {
+    content: "ALV 0%";
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .pricing__table td:nth-child(3)::before {
+    content: "ALV 25,5%";
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .pricing__table td:nth-child(3) {
+    border-left: 1px solid var(--border);
+  }
+}
+
+.pricing__note {
+  margin: 12px 14px 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.pricing__tax {
+  margin: 10px 14px 16px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* ================================================
+   OTA YHTEYTTÄ
+   Pikayhteydet + yhteydenottolomake
+================================================ */
+.contact {
+  padding: var(--space-6) 0;
+  background: linear-gradient(to bottom, transparent, var(--soft));
+}
+
+.contact__wrap {
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.contact__header {
+  text-align: left;
+  margin-bottom: var(--space-4);
+}
+
+.contact__quick {
+  display: grid;
+  gap: 12px;
+  margin-top: var(--space-3);
+}
+
+@media (min-width: 680px) {
+  .contact__quick { grid-template-columns: 1fr 1fr; }
+}
+
+/* Klikattava yhteystietopalkki */
+.contactChip {
+  display: grid;
+  gap: 6px;
+  text-decoration: none;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: #f2faf5;
+  min-width: 0;
+}
+
+.contactChip__label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.contactChip__value {
+  font-size: 18px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* ================================================
+   LOMAKE (FORM)
+   Ruudukkopohjainen lomake.
+   Pakolliset: nimi, puhelin, GDPR
+   Valinnaiset: sähköposti, viesti, palvelut
+================================================ */
+.form {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.form__grid {
+  display: grid;
+  gap: 14px;
+}
+
+@media (min-width: 720px) {
+  .form__grid { grid-template-columns: 1fr 1fr; }
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* Koko leveyteen menevä kenttä */
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.field__label {
+  font-weight: 700;
+}
+
+.field__input,
+.field__textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 14px;
+  font-size: 16px;
+  background: #fff;
+  font-family: inherit;
+}
+
+.field__textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.field__input:focus,
+.field__textarea:focus {
+  outline: var(--focus);
+  border-color: rgba(31, 122, 74, 0.35);
+}
+
+/* Palvelunvalinta-kehys */
+.fieldset {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  background: #fff;
+}
+
+.fieldset__legend {
+  font-weight: 700;
+  padding: 0 6px;
+}
+
+.checks {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+@media (min-width: 720px) {
+  .checks { grid-template-columns: 1fr 1fr; }
+}
+
+.check {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  user-select: none;
+}
+
+.check__input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--accent);
+}
+
+.check__text {
+  font-size: 16px;
+  color: var(--text);
+}
+
+/* GDPR-hyväksyntä korostettu taustalla */
+.check--gdpr {
+  padding: 12px 12px;
+  border-radius: 14px;
+  background: rgba(31, 122, 74, 0.06);
+  border: 1px solid rgba(31, 122, 74, 0.18);
+}
+
+.form__submit {
+  width: 100%;
+  margin-top: 14px;
+}
+
+/* Tilailmoitus: "Lähetetään..." / "Kiitos!" / virhe */
+.form__status {
+  margin: 12px 0 0;
+  min-height: 24px;
+  font-weight: 800;
+}
+
+.form__privacy {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ================================================
+   ALATUNNISTE (FOOTER)
+   Brändi vasemmalla, yhteystiedot oikealla.
+   Mobiilissa kaikki keskitetty.
+================================================ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+  background: #fff;
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.footer__brand strong {
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.footer__brand span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Yhteystiedot ikoneineen */
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.footer__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.footer__links a:hover { color: var(--accent); }
+
+.footer__links a svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* Tietosuojalinkki alareunassa koko leveyteen */
+.footer__privacy {
+  width: 100%;
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--border);
+  text-decoration: none;
+  display: block;
+  transition: color 0.15s;
+}
+
+.footer__privacy:hover { color: var(--muted); }
+
+@media (max-width: 600px) {
+  .footer__inner { flex-direction: column; align-items: center; text-align: center; }
+  .footer__brand { align-items: center; }
+  .footer__links { align-items: center; }
+}
+
+/* ================================================
+   FAB (Floating Action Button)
+   Kelluvaa puhelinnappul­aa ei enää käytetä,
+   mutta koodi säilytetään varmuuden vuoksi.
+================================================ */
+.callFab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 600;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  font-size: 22px;
+  box-shadow: var(--shadow);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.callFab:hover { background: var(--accent-2); }
+
+/* ================================================
+   KIITOS-MODAALI
+   Avautuu onnistuneen lomakelähetyksen jälkeen.
+================================================ */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 999900;
+}
+
+.modal.is-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 27, 20, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 100%);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Otsikko ja teksti keskitetty */
+.modal__title {
+  margin: 0 0 10px;
+  font-size: 26px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.modal__text {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+/* ================================================
+   MOBIILIVALIKKO
+   Avautuu hampurilaisnapista oikealta.
+   Leveys: max 360px tai 92% näytöstä.
+================================================ */
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: none;
+}
+
+.mobileMenu.is-open { display: block; }
+
+/* Tumma tausta valikon takana */
+.mobileMenu__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 27, 20, 0.45);
+  z-index: 0;
+}
+
+/* Oikealta liukuva paneeli */
+.mobileMenu__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  width: min(360px, 92vw);
+  height: 100%;
+  z-index: 1;
+  background:
+    radial-gradient(600px 400px at 10% 0%, rgba(31, 122, 74, 0.08), transparent 60%),
+    #ffffff;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Yläosa: logo + X-nappi */
+.mobileMenu__top {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  min-height: 64px;
+}
+
+.mobileMenu__brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.mobileMenu__logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Sulkemisnappi oikealla yläkulmassa */
+.mobileMenu__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(31, 122, 74, 0.22);
+  background: #f4faf6;
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.mobileMenu__close:hover {
+  background: rgba(31, 122, 74, 0.1);
+  border-color: rgba(31, 122, 74, 0.38);
+}
+
+.mobileMenu__close:active { transform: scale(0.97); }
+
+.mobileMenu__intro {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--muted);
+  max-width: 300px;
+}
+
+/* Navigaatiolinkit */
+.mobileMenu__nav {
+  width: 100%;
+  max-width: 320px;
+  display: grid;
+  gap: 8px;
+}
+
+.mobileMenu__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 56px;
+  padding: 10px 16px;
+  border-radius: 18px;
+  border: 1.5px solid rgba(31, 122, 74, 0.18);
+  background: rgba(31, 122, 74, 0.05);
+  text-decoration: none;
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.mobileMenu__link:hover {
+  background: rgba(31, 122, 74, 0.1);
+  border-color: rgba(31, 122, 74, 0.34);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(31, 122, 74, 0.08);
+}
+
+/* Pääkehotuspainike valikon sisällä */
+.mobileMenu__cta {
+  width: 100%;
+  max-width: 320px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 800;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(31, 122, 74, 0.25);
+  transition: background 0.15s, transform 0.1s;
+}
+
+.mobileMenu__cta:hover {
+  background: var(--accent-2);
+  transform: translateY(-1px);
+}
+
+/* Nykyinen sivu merkitty vihreällä */
+.mobileMenu__link--active {
+  color: var(--accent);
+  border-color: rgba(31, 122, 74, 0.35);
+  background: rgba(31, 122, 74, 0.1);
+}
+
+/* Pikayhteydet: WhatsApp, viesti, puhelu */
+.mobileMenu__quickActions {
+  width: 100%;
+  max-width: 320px;
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.mobileQuickLink {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--text);
+  min-height: 64px;
+}
+
+.mobileQuickLink svg {
+  width: 34px;
+  height: 34px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 34px;
+}
+
+/* WhatsApp-ikoni täytetty */
+.mobileQuickLink:first-child svg {
+  fill: var(--accent);
+  stroke: none;
+}
+
+.mobileQuickLink span {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (max-width: 520px) {
+  .mobileMenu__quickActions { gap: 6px; }
+  .mobileQuickLink span { font-size: 12px; }
+}
+
+/* ================================================
+   EVÄSTEBANNERI
+   Liukuu ylös sivun alaosasta.
+   Piilotetaan kun käyttäjä tekee valinnan.
+================================================ */
+.cookieBanner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999800;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  padding: 14px var(--gutter);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%); /* Piilotettu alun perin */
+  transition: transform 0.35s ease;
+}
+
+/* Näkyy kun JavaScript lisää luokan */
+.cookieBanner.is-visible {
+  transform: translateY(0);
+}
+
+.cookieBanner__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cookieBanner__text {
+  flex: 1;
+  font-size: 14px;
+  color: var(--muted);
+  min-width: 200px;
+  line-height: 1.5;
+}
+
+.cookieBanner__text a {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.cookieBanner__actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* Hyväksy-nappi: vihreä */
+.cookieBanner__accept {
+  min-height: 40px;
+  min-width: 100px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 120ms;
+}
+
+.cookieBanner__accept:hover { background: var(--accent-2); }
+
+/* Hylkää-nappi: valkoinen reunuksella */
+.cookieBanner__decline {
+  min-height: 40px;
+  min-width: 100px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 120ms, color 120ms;
+}
+
+.cookieBanner__decline:hover {
+  border-color: var(--muted);
+  color: var(--text);
+}
+
+@media (max-width: 520px) {
+  .cookieBanner__actions { width: 100%; }
+  .cookieBanner__accept,
+  .cookieBanner__decline { flex: 1; text-align: center; }
+}
+
+/* ================================================
+   TIETOSUOJASELOSTE-SIVU
+   Käytetään privacy.html:ssä
+================================================ */
+.privacy {
+  padding: var(--space-6) 0;
+  min-height: 60vh;
+}
+
+.privacy h2 {
+  font-size: 22px;
+  margin: var(--space-5) 0 var(--space-2);
+  color: var(--accent);
+}
+
+.privacy ul {
+  padding-left: 22px;
+  margin: var(--space-2) 0;
+}
+
+.privacy li {
+  margin-bottom: var(--space-1);
+}
+
+/* ================================================
+   SOITTOPYYNTÖMODAALI
+   Avautuu "Soittopyyntö"-napista.
+   Pakolliset kentät: nimi, puhelin.
+================================================ */
+.callbackModal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 999950;
+}
+
+.callbackModal.is-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.callbackModal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 27, 20, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.callbackModal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(560px, 100%);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.callbackModal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--text);
+}
+
+.callbackModal__title {
+  margin: 0 0 10px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.callbackModal__text {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.callbackForm__grid {
+  display: grid;
+  gap: 14px;
+}
+
+.callbackForm__submit {
+  width: 100%;
+  margin-top: 14px;
+}
+
+/* Tilailmoitus: "Lähetetään..." / "Kiitos!" / virhe */
+.callbackForm__status {
+  margin: 12px 0 0;
+  min-height: 24px;
+  font-weight: 600;
+}
+
+@media (max-width: 520px) {
+  .callbackModal.is-open { padding: 14px; }
+  .callbackModal__dialog { padding: 20px 16px; border-radius: 18px; }
+  .callbackModal__title { font-size: 24px; }
+}

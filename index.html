@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Sivun otsikko ja kuvaus hakukoneita varten -->
+    <title>KotiAsuminen – Luotettavaa kotiapua Kokkolassa</title>
+    <meta
+      name="description"
+      content="KotiAsuminen tarjoaa luotettavaa kotiapua ja siivouspalveluja Kokkolassa ja lähialueilla."
+    />
+
+    <!-- Open Graph -metatiedot: näkyvät WhatsApp/Telegram/Facebook-jaoissa -->
+    <!-- MUISTA: Vaihda SINUN-DOMAIN.fi oikeaan verkkotunnukseesi! -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="KotiAsuminen – Luotettavaa kotiapua Kokkolassa" />
+    <meta property="og:description" content="KotiAsuminen tarjoaa luotettavaa kotiapua ja siivouspalveluja Kokkolassa ja lähialueilla." />
+    <meta property="og:image" content="https://SINUN-DOMAIN.fi/img/hero.jpg" />
+    <meta property="og:url" content="https://SINUN-DOMAIN.fi/" />
+    <meta property="og:locale" content="fi_FI" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon eli selaimen välilehden kuvake -->
+    <link rel="icon" href="./img/logo1.png" type="image/png" />
+
+    <!-- Tyylitiedosto -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <!-- Saavutettavuus: hyppy suoraan pääsisältöön näppäimistöllä -->
+    <a class="skip-link" href="#main">Siirry sisältöön</a>
+
+    <!-- ================================================
+         YLÄTUNNISTE (HEADER)
+         Kiinteä palkki sivun yläreunassa.
+         Sisältää: logo, puhelinnumero, soittopyyntönappi, navigaatio
+    ================================================ -->
+    <header class="header" id="top">
+
+      <!-- Yläpalkki: logo + puhelin + nappi -->
+      <div class="header__top">
+        <div class="container header__top-inner">
+
+          <!-- Logo ja yrityksen nimi -->
+          <a class="brand" href="#top" aria-label="KotiAsuminen – etusivu">
+            <img
+              class="brand__logo"
+              src="./img/logo1.png"
+              alt="KotiAsuminen logo"
+              width="96"
+              height="96"
+              loading="eager"
+            />
+            <span class="brand__text">
+              <span class="brand__name">KOTIASUMINEN</span>
+              <span class="brand__tagline">YHDESSÄ ME ELÄMME</span>
+            </span>
+          </a>
+
+          <!-- Puhelinnumero: klikattava linkki -->
+          <a class="header__phone" href="tel:+358408108784">+358 40 810 8784</a>
+
+          <div class="header__top-right">
+            <!-- Soittopyyntönappi: avaa modaalin (data-callback-open) -->
+            <a href="#" class="btn btn--primary btn--header-cta" data-callback-open>
+              Soittopyyntö
+            </a>
+
+            <!-- Hampurilaisnappi mobiilivalikkoa varten -->
+            <button
+              class="burger"
+              type="button"
+              aria-label="Avaa valikko"
+              aria-controls="mobileMenu"
+              aria-expanded="false"
+              data-burger
+            >
+              <span class="burger__line"></span>
+              <span class="burger__line"></span>
+              <span class="burger__line"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigaatiopalkki: sivulinkit (piilotettu mobiilissa) -->
+      <div class="header__nav-bar">
+        <div class="container">
+          <nav class="nav" aria-label="Päävalikko">
+            <a class="nav__link" href="#meista">Meistä</a>
+            <a class="nav__link" href="#palvelut">Palvelut</a>
+            <a class="nav__link" href="#miten">Miten se toimii</a>
+            <a class="nav__link" href="#hinnasto">Hinnasto</a>
+            <a class="nav__link" href="#yhteys">Yhteys</a>
+            <a class="nav__link" href="./privacy.html">Tietosuojaseloste</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <!-- ================================================
+           HERO-OSIO
+           Kuvakaruselli tekstillä ja toimintanapeilla.
+           Kuvat vaihdetaan automaattisesti 5 sekunnin välein.
+           Ensimmäinen kuva ladataan heti, muut laiskasti (data-bg).
+      ================================================ -->
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="container hero__grid">
+          <div class="hero__content">
+
+            <!-- Slide 1: arjen asiointi -->
+            <div class="hero__slide is-active" id="slide0">
+              <h1 class="hero__title" id="heroTitle">
+                Arjen asioilla – aina rinnallasi
+              </h1>
+              <p class="hero__sub">
+                Kauppareissut, apteekkikäynnit ja muut arjen asioinnit sujuvat
+                helpommin yhdessä. Olemme tukenasi ja myös juttuseurana –
+                monella ihmisellä ei ole läheistä, jonka kanssa keskustella.
+              </p>
+            </div>
+
+            <!-- Slide 2: ulkoilu -->
+            <div class="hero__slide" id="slide1">
+              <h1 class="hero__title">
+                Turvallinen ulkoilu – yhdessä joka askeleella
+              </h1>
+              <p class="hero__sub">
+                Kävelylenkit, rollaattoriretket ja pyörätuoliasiointi – autamme
+                sinua pysymään liikkeessä turvallisesti.
+              </p>
+            </div>
+
+            <!-- Slide 3: siivous -->
+            <div class="hero__slide" id="slide2">
+              <h1 class="hero__title">Puhdas koti tekee arjesta helpompaa</h1>
+              <p class="hero__sub">
+                Huolehdimme siivouksesta ja kodinhoidosta, jotta voit keskittyä
+                tärkeimpiin asioihin.
+              </p>
+            </div>
+
+            <!-- Pääkehotuspainike: soittopyyntö + huomio -->
+            <div class="hero__primaryCta">
+              <a href="#" class="btn btn--primary btn--hero-main" data-callback-open>
+                Soittopyyntö
+              </a>
+              <p class="hero__note">
+                Soitamme takaisin yleensä saman päivän aikana.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hero-kuvat: ensimmäinen ladataan heti, muut laiskasti -->
+          <div class="hero__media" aria-hidden="true">
+            <div class="hero__img is-active" id="img0" style="background-image:url('./img/hero.jpg')"></div>
+            <div class="hero__img" id="img1" data-bg="./img/hero2.png"></div>
+            <div class="hero__img" id="img2" data-bg="./img/hero3.png"></div>
+          </div>
+
+          <!-- Navigaatiopisteet karusellille -->
+          <div class="hero__dots" role="group" aria-label="Slidit">
+            <button class="hero__dot is-active" data-index="0" aria-label="Slidi 1"></button>
+            <button class="hero__dot" data-index="1" aria-label="Slidi 2"></button>
+            <button class="hero__dot" data-index="2" aria-label="Slidi 3"></button>
+          </div>
+
+          <!-- Yhteydenottonapit: WhatsApp, soitto, viesti -->
+          <div class="hero__cta">
+            <a class="hero__action" href="https://wa.me/358408108784" target="_blank" rel="noopener">
+              <svg class="btn__icon btn__icon--fill" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.52 3.48A11.82 11.82 0 0 0 12.07 0C5.5 0 .15 5.35.15 11.92c0 2.1.55 4.14 1.6 5.94L0 24l6.33-1.66a11.9 11.9 0 0 0 5.74 1.47h.01c6.57 0 11.92-5.35 11.92-11.92 0-3.18-1.24-6.17-3.48-8.41ZM12.08 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.76.99 1-3.66-.23-.38a9.87 9.87 0 0 1-1.52-5.25c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.01 2.9a9.86 9.86 0 0 1 2.91 7.02c0 5.47-4.45 9.92-9.92 9.92Zm5.44-7.43c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.46-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.08-.79.38-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.71.63.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z"/>
+              </svg>
+              WhatsApp
+            </a>
+
+            <a class="hero__action hero__action--solid" href="tel:+358408108784">
+              <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"></path>
+              </svg>
+              Soita nyt
+            </a>
+
+            <a class="hero__action" href="#yhteys">
+              <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 2 11 13"></path>
+                <path d="M22 2 15 22 11 13 2 9l20-7z"></path>
+              </svg>
+              Lähetä viesti
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+           MIKSI VALITA KOTIASUMINEN
+           Kolme etukorttia vihreillä gallukoilla
+      ================================================ -->
+      <section class="benefits" aria-labelledby="benefitsTitle">
+        <div class="container">
+          <h2 class="section-title" id="benefitsTitle">Miksi valita KotiAsuminen</h2>
+          <div class="benefits__grid">
+
+            <article class="benefitCard">
+              <div class="benefitCard__titleRow">
+                <div class="benefitCard__check" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3 class="benefitCard__title">Luotettava palvelu</h3>
+              </div>
+              <p class="benefitCard__text">Toimimme ystävällisesti, rauhallisesti ja asiakkaan tarpeita kuunnellen.</p>
+            </article>
+
+            <article class="benefitCard">
+              <div class="benefitCard__titleRow">
+                <div class="benefitCard__check" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3 class="benefitCard__title">Kokemus hoiva-alalta</h3>
+              </div>
+              <p class="benefitCard__text">Palvelussa yhdistyvät käytännön apu, huolenpito ja turvallinen arki.</p>
+            </article>
+
+            <article class="benefitCard">
+              <div class="benefitCard__titleRow">
+                <div class="benefitCard__check" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3 class="benefitCard__title">Paikallinen apu</h3>
+              </div>
+              <p class="benefitCard__text">Palvelemme Kokkolassa ja lähialueilla nopeasti ja joustavasti.</p>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+           MEISTÄ
+           Kuva + teksti yrityksen taustasta
+      ================================================ -->
+      <section class="about" id="meista" aria-labelledby="aboutTitle">
+        <div class="container about__grid">
+          <div class="about__media" aria-hidden="true">
+            <img src="./img/foto.png" alt="Tatjana Shevchenko" loading="lazy" />
+          </div>
+          <div class="about__content">
+            <h2 class="section-title" id="aboutTitle">Meistä</h2>
+            <p>Hei! Olen Tetiana Shevchenko. Olen kotoisin Ukrainasta ja olen asunut Suomessa lasteni kanssa vuodesta 2022.</p>
+            <p>Huhtikuusta 2024 lähtien olen työskennellyt ikäihmisten hoiva-alalla Kokkolassa, ja joulukuussa 2025 sain lähihoitajan tutkintotodistuksen.</p>
+            <p>KotiAsuminen syntyi halusta auttaa ihmisiä pysymään kotona pidempään ja elää turvallisesti omassa ympäristössään. Tarjoamme yksilöllistä apua, luotettavaa hoivaa ja siivouspalveluja.</p>
+            <p>Soita rohkeasti tai jätä soittopyyntö – me soitamme takaisin. Keskustellaan yhdessä tarpeistasi ja vastataan kaikkiin kysymyksiisi.</p>
+            <div class="about__cta">
+              <a class="btn btn--primary btn--lg" href="#" data-callback-open>Soittopyyntö</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+           PALVELUT
+           Palvelukortit kuvilla ja hintalinkeillä.
+           Kuvat ladataan laiskasti (loading="lazy").
+      ================================================ -->
+      <section class="services" id="palvelut" aria-labelledby="servicesTitle">
+        <div class="container">
+          <h2 class="section-title" id="servicesTitle">Palvelut</h2>
+          <p class="section-subtitle">Tarjoamme luotettavia ja yksilöllisiä palveluja kotiin ja arkeen.</p>
+
+          <div class="services__grid">
+
+            <article class="serviceCard">
+              <div class="serviceCard__media">
+                <img src="./img/hoitotyo.png" alt="Henkilökohtainen avustus" loading="lazy" />
+              </div>
+              <div class="serviceCard__body">
+                <h3 class="serviceCard__title">Henkilökohtainen avustus</h3>
+                <p class="serviceCard__text">Apua kotona asumiseen ja arjessa selviytymiseen. Palveluihin kuuluu perushoito, avustaminen ja hyvinvoinnin tukeminen.</p>
+                <p class="serviceCard__price"><a href="#hinnasto">Katso hinnat</a></p>
+              </div>
+            </article>
+
+            <article class="serviceCard">
+              <div class="serviceCard__media">
+                <img src="./img/kotiapu.png" alt="Perussiivous" loading="lazy" />
+              </div>
+              <div class="serviceCard__body">
+                <h3 class="serviceCard__title">Perussiivous</h3>
+                <p class="serviceCard__text">Luotettavaa perussiivousta koteihin ja toimistoihin. Sisältäen pölyjen pyyhkimisen, lattioiden pesun ja pintojen puhdistuksen.</p>
+                <p class="serviceCard__price"><a href="#hinnasto">Katso hinnat</a></p>
+              </div>
+            </article>
+
+            <article class="serviceCard">
+              <div class="serviceCard__media">
+                <img src="./img/muuttosiivous.png" alt="Muuttosiivous" loading="lazy" />
+              </div>
+              <div class="serviceCard__body">
+                <h3 class="serviceCard__title">Muuttosiivous</h3>
+                <p class="serviceCard__text">Huolellinen muuttosiivous asunnon tyhjennyksen jälkeen. Sisältää keittiön, kylpyhuoneen ja kaikki asuintilat.</p>
+                <p class="serviceCard__price"><a href="#hinnasto">Katso hinnat</a></p>
+              </div>
+            </article>
+
+            <article class="serviceCard">
+              <div class="serviceCard__media">
+                <img src="./img/kalmasiivous.png" alt="Kalmasiivous" loading="lazy" />
+              </div>
+              <div class="serviceCard__body">
+                <h3 class="serviceCard__title">Kalmasiivous</h3>
+                <p class="serviceCard__text">Huolellinen ja kunnioittava siivous kuolemantapauksen jälkeen. Sisältää tilojen puhdistuksen ja hygienisoinnin.</p>
+                <p class="serviceCard__price"><a href="#hinnasto">Katso hinnat</a></p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+           MITEN SE TOIMII
+           3 vaihetta: yhteydenotto → kartoitus → aloitus
+      ================================================ -->
+      <section class="steps" id="miten" aria-labelledby="stepsTitle">
+        <div class="container">
+          <h2 class="section-title" id="stepsTitle">Miten se toimii</h2>
+          <div class="steps__grid">
+            <div class="step">
+              <div class="step__number">1</div>
+              <h3 class="step__title">Ota yhteyttä</h3>
+              <p class="step__text">Soita, lähetä viesti tai jätä soittopyyntö.</p>
+            </div>
+            <div class="step">
+              <div class="step__number">2</div>
+              <h3 class="step__title">Kerro tarpeesi</h3>
+              <p class="step__text">Kartoitetaan yhdessä, millaista apua tarvitset.</p>
+            </div>
+            <div class="step">
+              <div class="step__number">3</div>
+              <h3 class="step__title">Sovitaan aika</h3>
+              <p class="step__text">Valitaan sopiva aika ja aloitamme palvelun joustavasti.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+           HINNASTO
+           Hintataulukko ALV 0% ja ALV 25,5%
+           Mobiilissa muuttuu korteiksi (CSS-muunnos)
+      ================================================ -->
+      <section class="pricing" id="hinnasto" aria-labelledby="pricingTitle">
+        <div class="container">
+          <h2 class="section-title" id="pricingTitle">Hinnasto</h2>
+          <p class="section-subtitle">Hintamme ovat läpinäkyviä ja sovitaan aina yhdessä.</p>
+
+          <div class="pricing__tableWrap">
+            <table class="pricing__table">
+              <thead>
+                <tr>
+                  <th>Palvelu</th>
+                  <th>Hinta alv 0%</th>
+                  <th>Hinta sis. alv 25,5%</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Henkilökohtainen avustus</td>
+                  <td>27,40 € / h</td>
+                  <td>34,39 € / h</td>
+                </tr>
+                <tr>
+                  <td>Perussiivous</td>
+                  <td>36 € / h</td>
+                  <td>45,18 € / h</td>
+                </tr>
+                <tr>
+                  <td>Muuttosiivous</td>
+                  <td>38 € / h</td>
+                  <td>47,69 € / h</td>
+                </tr>
+                <tr>
+                  <td>Kalmasiivous</td>
+                  <td>alkaen 80,00 € / h</td>
+                  <td>alkaen 100,40 € / h</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="pricing__note">
+              Kaikki hinnat ovat suuntaa antavia; lopullinen hinta sovitaan etukäteen.
+            </p>
+
+            <p class="pricing__tax">
+              <strong>
+                Siivoustyö on kotitalousvähennyskelpoista, ja verohyödyn saa
+                myös omille vanhemmille, isovanhemmille tai kesämökille
+                ostetuista palveluista.
+              </strong>
+              Lue lisää
+              <a href="https://www.vero.fi/henkiloasiakkaat/vahennykset/kotitalousvahennys/" target="_blank" rel="noopener">vero.fi</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+           OTA YHTEYTTÄ
+           Yhteydenottolomake Google Apps Scriptiin.
+           Pakolliset: nimi, puhelin, GDPR
+           Valinnaiset: sähköposti, viesti, palvelut
+      ================================================ -->
+      <section class="contact" id="yhteys" aria-labelledby="contactTitle">
+        <div class="container">
+          <div class="contact__wrap">
+            <header class="contact__header">
+              <h2 class="section-title" id="contactTitle">Ota yhteyttä</h2>
+              <p class="section-subtitle">Jätä viesti – otamme yhteyttä pian.</p>
+
+              <!-- Pikayhteydet: puhelin ja sähköposti -->
+              <div class="contact__quick">
+                <a class="contactChip" href="tel:+358408108784">
+                  <span class="contactChip__label">Puhelin</span>
+                  <span class="contactChip__value">+358 40 810 8784</span>
+                </a>
+                <a class="contactChip" href="mailto:kotiasuminen@gmail.com">
+                  <span class="contactChip__label">Sähköposti</span>
+                  <span class="contactChip__value">kotiasuminen@gmail.com</span>
+                </a>
+              </div>
+            </header>
+
+            <!-- Yhteydenottolomake -->
+            <form class="form" id="contactForm" novalidate>
+              <div class="form__grid">
+
+                <!-- Nimi: pakollinen -->
+                <div class="field">
+                  <label class="field__label" for="name">
+                    Nimi <span class="required" aria-hidden="true">*</span>
+                  </label>
+                  <input class="field__input" id="name" name="name" type="text" autocomplete="name" required />
+                </div>
+
+                <!-- Puhelin: pakollinen -->
+                <div class="field">
+                  <label class="field__label" for="phone">
+                    Puhelin <span class="required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="field__input"
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    placeholder="+358 40 123 4567"
+                    maxlength="16"
+                    pattern="^\+?[0-9 ]{7,16}$"
+                    required
+                  />
+                </div>
+
+                <!-- Sähköposti: vapaaehtoinen -->
+                <div class="field field--full">
+                  <label class="field__label" for="email">Sähköposti (vapaaehtoinen)</label>
+                  <input class="field__input" id="email" name="email" type="email" autocomplete="email" />
+                </div>
+
+                <!-- Viesti: vapaaehtoinen (ei required) -->
+                <div class="field field--full">
+                  <label class="field__label" for="message">Viesti / Mitä apua tarvitset? (vapaaehtoinen)</label>
+                  <textarea class="field__textarea" id="message" name="message" rows="5"></textarea>
+                </div>
+
+                <!-- Palveluvalinta: vapaaehtoinen -->
+                <fieldset class="fieldset field--full">
+                  <legend class="fieldset__legend">Valitse palvelu (vapaaehtoinen)</legend>
+                  <div class="checks">
+                    <label class="check">
+                      <input class="check__input" type="checkbox" name="services" value="Henkilökohtainen avustus" />
+                      <span class="check__text">Henkilökohtainen avustus</span>
+                    </label>
+                    <label class="check">
+                      <input class="check__input" type="checkbox" name="services" value="Perussiivous" />
+                      <span class="check__text">Perussiivous</span>
+                    </label>
+                    <label class="check">
+                      <input class="check__input" type="checkbox" name="services" value="Muuttosiivous" />
+                      <span class="check__text">Muuttosiivous</span>
+                    </label>
+                    <label class="check">
+                      <input class="check__input" type="checkbox" name="services" value="Kalmasiivous" />
+                      <span class="check__text">Kalmasiivous</span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <!-- GDPR-hyväksyntä: pakollinen -->
+                <div class="field field--full">
+                  <label class="check check--gdpr">
+                    <input class="check__input" type="checkbox" name="gdpr" required />
+                    <span class="check__text">
+                      Hyväksyn, että tietojani käytetään yhteydenottoon.
+                      <span class="required" aria-hidden="true">*</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Lähetyspainike -->
+              <button class="btn btn--primary btn--lg form__submit" id="submitBtn" type="submit">
+                Lähetä
+              </button>
+
+              <!-- Tilailmoitus: "Lähetetään..." / "Kiitos!" / virhe -->
+              <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+
+              <!-- Tietosuojalinkki lomakkeen alla -->
+              <p class="form__privacy">
+                Lähettämällä viestin hyväksyt tietojen käsittelyn yhteydenottoa varten.
+                <a href="./privacy.html">Tietosuojaseloste</a>.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================================================
+         ALATUNNISTE (FOOTER)
+         Yhteystiedot ikoneineen + tietosuojalinkki
+    ================================================ -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <strong>KotiAsuminen</strong>
+          <span>Kokkola ja lähialueet</span>
+        </div>
+        <div class="footer__links">
+          <a href="tel:+358408108784">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"/>
+            </svg>
+            +358 40 810 8784
+          </a>
+          <a href="mailto:kotiasuminen@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-10 7L2 7"/>
+            </svg>
+            kotiasuminen@gmail.com
+          </a>
+        </div>
+        <a href="./privacy.html" class="footer__privacy">Tietosuojaseloste</a>
+      </div>
+    </footer>
+
+    <!-- ================================================
+         MOBIILIVALIKKO
+         Avautuu hampurilaisnapista.
+         Suljetaan: taustaa klikkaamalla, X-napilla,
+         tai navigointilinkkiä painamalla (data-menu-close)
+    ================================================ -->
+    <div class="mobileMenu" id="mobileMenu" aria-hidden="true" data-menu>
+
+      <!-- Tumma tausta – klikkaus sulkee valikon -->
+      <div class="mobileMenu__backdrop" data-menu-close></div>
+
+      <div class="mobileMenu__panel" role="dialog" aria-modal="true" aria-label="Valikko">
+
+        <!-- Valikon yläosa: logo + sulkemisnappi -->
+        <div class="mobileMenu__top">
+          <a class="mobileMenu__brand" href="#top" data-menu-close aria-label="KotiAsuminen">
+            <img class="mobileMenu__logo" src="./img/logo1.png" alt="KotiAsuminen logo" width="64" height="64" />
+          </a>
+          <button class="mobileMenu__close" type="button" data-menu-close aria-label="Sulje valikko">×</button>
+        </div>
+
+        <p class="mobileMenu__intro">Valitse kohta tai ota meihin yhteyttä.</p>
+
+        <!-- Navigaatiolinkit -->
+        <nav class="mobileMenu__nav" aria-label="Mobiilivalikko">
+          <a class="mobileMenu__link" href="#meista" data-menu-close>Meistä</a>
+          <a class="mobileMenu__link" href="#palvelut" data-menu-close>Palvelut</a>
+          <a class="mobileMenu__link" href="#miten" data-menu-close>Miten se toimii</a>
+          <a class="mobileMenu__link" href="#hinnasto" data-menu-close>Hinnasto</a>
+          <a class="mobileMenu__link" href="#yhteys" data-menu-close>Yhteys</a>
+          <a class="mobileMenu__link" href="./privacy.html" data-menu-close>Tietosuojaseloste</a>
+        </nav>
+
+        <!-- Pääkehotuspainike: avaa soittopyyntömodaalin -->
+        <a href="#" class="mobileMenu__cta" data-callback-open data-menu-close>
+          Soittopyyntö
+        </a>
+
+        <!-- Pikayhteydet: WhatsApp, viesti, puhelu -->
+        <div class="mobileMenu__quickActions">
+          <a class="mobileQuickLink" href="https://wa.me/358408108784" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.52 3.48A11.82 11.82 0 0 0 12.07 0C5.5 0 .15 5.35.15 11.92c0 2.1.55 4.14 1.6 5.94L0 24l6.33-1.66a11.9 11.9 0 0 0 5.74 1.47h.01c6.57 0 11.92-5.35 11.92-11.92 0-3.18-1.24-6.17-3.48-8.41ZM12.08 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.76.99 1-3.66-.23-.38a9.87 9.87 0 0 1-1.52-5.25c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.01 2.9a9.86 9.86 0 0 1 2.91 7.02c0 5.47-4.45 9.92-9.92 9.92Zm5.44-7.43c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.46-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.08-.79.38-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.71.63.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+
+          <a class="mobileQuickLink" href="#yhteys" data-menu-close aria-label="Viesti">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 2 11 13"></path>
+              <path d="M22 2 15 22 11 13 2 9l20-7z"></path>
+            </svg>
+            <span>Viesti</span>
+          </a>
+
+          <a class="mobileQuickLink" href="tel:+358408108784" aria-label="Soita">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"></path>
+            </svg>
+            <span>Soita</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================
+         SOITTOPYYNTÖMODAALI
+         Avautuu "Soittopyyntö"-napista (data-callback-open).
+         Pakolliset: nimi, puhelin
+         Valinnaiset: paras aika, viesti
+    ================================================ -->
+    <div class="callbackModal" id="callbackModal" aria-hidden="true">
+      <div class="callbackModal__backdrop" data-callback-close></div>
+      <div class="callbackModal__dialog" role="dialog" aria-modal="true" aria-labelledby="callbackTitle">
+
+        <button class="callbackModal__close" type="button" aria-label="Sulje" data-callback-close>×</button>
+
+        <h3 class="callbackModal__title" id="callbackTitle">Soittopyyntö</h3>
+        <p class="callbackModal__text">Jätä puhelinnumerosi, niin soitamme sinulle takaisin.</p>
+
+        <form class="callbackForm" id="callbackForm" novalidate>
+          <div class="callbackForm__grid">
+
+            <!-- Nimi: pakollinen -->
+            <div class="field">
+              <label class="field__label" for="cb_name">
+                Nimi <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input class="field__input" id="cb_name" name="name" type="text" autocomplete="name" required />
+            </div>
+
+            <!-- Puhelin: pakollinen -->
+            <div class="field">
+              <label class="field__label" for="cb_phone">
+                Puhelin <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                class="field__input"
+                id="cb_phone"
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="+358 40 123 4567"
+                pattern="^\+?[0-9 ]{7,16}$"
+                required
+              />
+            </div>
+
+            <!-- Paras soittoaika: vapaaehtoinen -->
+            <div class="field field--full">
+              <label class="field__label" for="cb_time">Paras aika soittaa</label>
+              <select class="field__input" id="cb_time" name="call_time">
+                <option value="">Valitse aika</option>
+                <option value="Mahdollisimman pian">Mahdollisimman pian</option>
+                <option value="Tänään">Tänään</option>
+                <option value="Huomenna">Huomenna</option>
+                <option value="Illalla">Illalla</option>
+              </select>
+            </div>
+
+            <!-- Viesti: vapaaehtoinen -->
+            <div class="field field--full">
+              <label class="field__label" for="cb_message">Viesti (valinnainen)</label>
+              <textarea class="field__textarea" id="cb_message" name="message" rows="4"></textarea>
+            </div>
+          </div>
+
+          <button class="btn btn--primary callbackForm__submit" type="submit" id="callbackSubmitBtn">Lähetä</button>
+
+          <!-- Tilailmoitus -->
+          <p class="callbackForm__status" id="callbackFormStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================================================
+         KIITOS-MODAALI
+         Avautuu automaattisesti onnistuneen lähetyksen jälkeen
+    ================================================ -->
+    <div class="modal" id="successModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close></div>
+      <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+        <button class="modal__close" type="button" data-close aria-label="Sulje">×</button>
+        <h3 class="modal__title" id="successTitle">Kiitos!</h3>
+        <p class="modal__text">Otamme yhteyttä pian. Voit sulkea tämän ikkunan tai palata sivun alkuun.</p>
+        <div class="modal__actions">
+          <button class="btn" type="button" data-close>Sulje</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================
+         EVÄSTEBANNERI
+         Näytetään kerran käyttäjälle.
+         Valinta tallennetaan localStorage-muistiin.
+    ================================================ -->
+    <div class="cookieBanner" id="cookieBanner" role="region" aria-label="Evästeet">
+      <div class="cookieBanner__inner">
+        <p class="cookieBanner__text">
+          Käytämme evästeitä parantaaksemme sivuston toimintaa.
+          Lue lisää <a href="./privacy.html">tietosuojaselosteesta</a>.
+        </p>
+        <div class="cookieBanner__actions">
+          <button class="cookieBanner__accept" id="cookieAccept">Hyväksy</button>
+          <button class="cookieBanner__decline" id="cookieDecline">Hylkää</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript-tiedosto: kaikki toiminnallisuus -->
+    <script src="./js/app.js"></script>
+  </body>
+</html>
