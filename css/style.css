@@ -341,7 +341,7 @@ body.no-scroll {
 
 .header__nav-bar .container {
   display: flex;
-  justify-content: stretch;
+  justify-content: flex-start;
 }
 
 .nav {
