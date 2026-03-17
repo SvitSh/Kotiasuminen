@@ -203,7 +203,7 @@
   // Google Apps Script -verkkosovellusURL
   // TÄRKEÄÄ: Päivitä tämä URL aina kun teet uuden Redeployn
   const WEB_APP_URL =
-    "https://script.google.com/macros/s/AKfycbzUp4K3w29LQho9uhuG3RhVyRqHQGYl9T_swt9oir2GEmoAK7xU_LlrJXMjuJnuCmDF2Q/exec";
+    "https://script.google.com/macros/s/AKfycbz4jBmNRdjGSvbQ9MolojjNQq5sW9UZvScqLTj5_J0SENErjyF7X5Sq5FThpYdiqLIl/exec";
 
   // Lähetä lomakkeen tiedot palvelimelle
   async function sendForm(payload) {
