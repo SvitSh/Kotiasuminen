@@ -542,6 +542,11 @@ body.no-scroll {
   }
 }
 
+@keyframes heroFadeImg {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* Hero-pääotsikko */
 .hero__title {
   font-size: clamp(30px, 4vw, 56px);
@@ -615,7 +620,7 @@ body.no-scroll {
 .hero__img.is-active {
   display: block;
    height: 100%;
-  animation: heroFade 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+   animation: heroFadeImg 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
 }
 
