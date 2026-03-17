@@ -608,6 +608,7 @@ body.no-scroll {
 
 .hero__img.is-active {
   display: block;
+   height: 100%;
   animation: heroFade 0.35s ease;
 }
 
@@ -896,7 +897,7 @@ body.no-scroll {
 
 @media (max-width: 920px) {
   .about__grid { grid-template-columns: 280px 1fr; gap: 28px; align-items: start; }
-  .about__media img { height: 340px; }
+  .about__media img { height: auto; }
   .about__content p { font-size: 18px; line-height: 1.7; }
 }
 
@@ -1494,6 +1495,7 @@ body.no-scroll {
   background: #fff;
   cursor: pointer;
   font-size: 16px;
+ color: var(--text);
 }
 
 /* Otsikko ja teksti keskitetty */
