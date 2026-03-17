@@ -704,6 +704,9 @@ body.no-scroll {
   .btn--hero-main {
     min-width: 340px;
   }
+    .hero__img {          
+    min-height: 420px;  
+  }     
 }
 
 
