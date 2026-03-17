@@ -528,13 +528,13 @@ body.no-scroll {
   flex-direction: column;
   justify-content: center;
   flex-grow: 1;
-  animation: heroFade 0.8s ease;
+  animation: heroFade 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 @keyframes heroFade {
   from { 
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(4px);
   }
   to { 
     opacity: 1;
@@ -615,7 +615,8 @@ body.no-scroll {
 .hero__img.is-active {
   display: block;
    height: 100%;
-  animation: heroFade 0.8s ease;
+  animation: heroFade 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
 }
 
 /* Desktop: korkeat kuvat */
