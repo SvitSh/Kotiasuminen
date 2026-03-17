@@ -928,7 +928,7 @@ body.no-scroll {
 }
 
 @media (max-width: 920px) {
-  .about__grid { grid-template-columns: 320px 1fr; gap: 28px; align-items: start; }
+  .about__grid { grid-template-columns: 400px 1fr; gap: 28px; align-items: start; }
   .about__media img { height: auto; }
   .about__content p { font-size: 18px; line-height: 1.7; }
 }
