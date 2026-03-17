@@ -1270,6 +1270,10 @@ body.no-scroll {
   border-color: rgba(31, 122, 74, 0.35);
 }
 
+select.field__input {
+  color: var(--text);
+  -webkit-text-fill-color: var(--text);
+}
 /* Palvelunvalinta-kehys */
 .fieldset {
   border: 1px solid var(--border);
