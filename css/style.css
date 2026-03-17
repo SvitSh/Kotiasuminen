@@ -349,7 +349,7 @@ body.no-scroll {
   display: grid;
   grid-template-columns: repeat(6, 1fr); /* 6 tasalevyistä saraketta */
   align-items: stretch;
-  gap: 2px;
+  gap: 0px;
   padding: 8px 0;
 }
 
