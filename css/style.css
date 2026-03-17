@@ -691,6 +691,21 @@ body.no-scroll {
     grid-template-areas: "content" "media" "dots" "cta";
   }
 }
+@media (max-width: 959px) and (min-width: 641px) {
+  .hero__content {
+    text-align: center;
+    align-items: center;
+  }
+  .hero__primaryCta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn--hero-main {
+    min-width: 340px;
+  }
+}
+
 
 /* Puhelin: keskitys + pienempi kuva */
 @media (max-width: 640px) {
