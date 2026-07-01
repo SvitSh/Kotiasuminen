@@ -2050,6 +2050,17 @@ select.field__input {
   color: #fff;
   white-space: nowrap;
 }
+
+.topbar__note {
+  width: 100%;
+  text-align: center;
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  font-style: italic;
+  white-space: nowrap;
+}
 .topbar__cta {
   background: #fff;
   color: #e8650a;
@@ -2086,6 +2097,11 @@ select.field__input {
     padding: 8px 18px;
   }
 
+    .topbar__note {
+    font-size: 12px;
+    margin-top: 0;
+  }
+
   .topbar__cta {
     padding: 10px 24px;
     font-size: 15px;
@@ -2111,3 +2127,4 @@ select.field__input {
   text-decoration: none;
 }
 .contact__notice a:hover { text-decoration: underline; }
+
