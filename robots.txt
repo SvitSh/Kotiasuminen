@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /.history/
+Disallow: /.vscode/
+Disallow: /js/sitemap.xml
 
 Sitemap: https://kotiasuminen.fi/sitemap.xml
