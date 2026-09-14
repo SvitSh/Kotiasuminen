@@ -1679,6 +1679,57 @@ input[type="checkbox"] {
   }
 }
 
+
+
+/* Tablet: pehmeä siirtymä tekstin ja kuvan välillä. */
+@media (min-width: 801px) and (max-width: 1100px) {
+  .hero {
+    grid-template-columns: 42% 58%;
+    background: var(--white);
+  }
+
+  .hero__left {
+    position: relative;
+    z-index: 3;
+    padding-right: 0;
+  }
+
+  .hero__content {
+    max-width: 470px;
+  }
+
+  .hero__image {
+    width: 116%;
+    margin-left: -16%;
+  }
+
+  .hero__image img {
+    object-position: 61% center;
+
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgb(0 0 0 / 0.12) 5%,
+      rgb(0 0 0 / 0.35) 11%,
+      rgb(0 0 0 / 0.64) 18%,
+      rgb(0 0 0 / 0.86) 26%,
+      #000 35%
+    );
+
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgb(0 0 0 / 0.12) 5%,
+      rgb(0 0 0 / 0.35) 11%,
+      rgb(0 0 0 / 0.64) 18%,
+      rgb(0 0 0 / 0.86) 26%,
+      #000 35%
+    );
+  }
+ }
+
+
+  
 @media (max-width: 800px) {
   .hero {
     grid-template-columns: minmax(0, 1fr);
