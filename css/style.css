@@ -1965,3 +1965,88 @@ input[type="checkbox"] {
     padding-inline: 16px;
   }
 }
+
+/* Yhteystiedot: yhteystiedot osaksi sivun nykyistä ilmettä. */
+.contactDetails {
+  display: grid;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 22px auto 16px;
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.contactDetails p {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 12px;
+  margin: 0;
+  color: var(--text);
+}
+.contactDetails strong {
+  color: var(--green-dark);
+  font-weight: 600;
+}
+.contactDetails a {
+  color: var(--green-dark);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.contactDetails a:hover,
+.contactDetails a:focus-visible {
+  color: var(--pink-accent);
+  text-decoration: underline;
+}
+
+/* Footerin yhteys- ja yritystiedot. */
+.footerContact {
+  display: grid;
+  gap: 3px;
+  margin-top: 18px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.footerContact a,
+.footerContact span {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+}
+.footerContact a {
+  overflow-wrap: anywhere;
+}
+.footerContact span {
+  opacity: .86;
+}
+
+@media (max-width: 800px) {
+  .contactDetails {
+    margin-top: 18px;
+  }
+  .footerContact {
+    justify-items: center;
+    margin-top: 16px;
+  }
+}
+@media (max-width: 520px) {
+  .contactDetails {
+    width: 100%;
+    max-width: 360px;
+    font-size: 15px;
+  }
+  .contactDetails p {
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 8px;
+  }
+}
+@media (max-width: 380px) {
+  .contactDetails p {
+    display: block;
+  }
+  .contactDetails strong {
+    display: block;
+    margin-bottom: 1px;
+  }
+}
+
