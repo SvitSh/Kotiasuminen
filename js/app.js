@@ -480,12 +480,53 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const serviceChoices = [...(form?.querySelectorAll('input[name="services"]') || [])];
+
+  const servicesGroup = document.getElementById("servicesGroup");
+  const servicesError = document.getElementById("servicesError");
+  let servicesValidationFailed = false;
+
+  function validateServices() {
+    const selected = serviceChoices.some((choice) => choice.checked);
+    serviceChoices[0]?.setCustomValidity(
+      selected ? "" : "Valitse vähintään yksi palvelu.",
+    );
+    const showError = servicesValidationFailed && !selected;
+    if (servicesError) servicesError.hidden = !showError;
+    servicesGroup?.setAttribute(
+      "aria-describedby", showError ? "servicesHelp servicesError" : "servicesHelp",
+    );
+    if (showError) {
+      servicesGroup?.setAttribute("aria-invalid", "true");
+      serviceChoices[0]?.setAttribute("aria-describedby", "servicesError");
+    } else {
+      servicesGroup?.removeAttribute("aria-invalid");
+      serviceChoices[0]?.removeAttribute("aria-describedby");
+    }
+  }
+
+  serviceChoices[0]?.addEventListener("invalid", () => {
+    servicesValidationFailed = true;
+    validateServices();
+  });
+
+  serviceChoices.forEach((choice) => {
+    choice.addEventListener("change", validateServices);
+  });
+  validateServices();
+
   /* Lomakkeen tyhjennys. */
 
   if (form) {
     form.addEventListener("reset", () => {
+      if (formStatus) formStatus.textContent = "";
       /* Myös valitut kuvat poistetaan. */
-      window.setTimeout(clearSelectedPhotos, 0);
+      window.setTimeout(() => {
+        clearSelectedPhotos();
+        form.querySelector(".photoUpload")?.removeAttribute("open");
+        servicesValidationFailed = false;
+        validateServices();
+      }, 0);
     });
 
     /* Lomakkeen lähetys. */
@@ -497,54 +538,55 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      validateServices();
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
 
-      const formData = new FormData(form);
+      try {
+        const formData = new FormData(form);
 
-      const payload = {
-        form_type: "contact",
-        source: "website",
+        const payload = {
+          form_type: "contact",
+          source: "website",
 
-        name: formData.get("name")?.toString().trim() || "",
-        phone: formData.get("phone")?.toString().trim() || "",
-        email: formData.get("email")?.toString().trim() || "",
-        message: formData.get("message")?.toString().trim() || "",
-        services: formData.getAll("services"),
-        gdpr: formData.get("gdpr") ? "yes" : "no",
+          name: formData.get("name")?.toString().trim() || "",
+          phone: formData.get("phone")?.toString().trim() || "",
+          email: formData.get("email")?.toString().trim() || "",
+          message: formData.get("message")?.toString().trim() || "",
+          services: formData.getAll("services"),
+          gdpr: formData.get("gdpr") ? "yes" : "no",
 
-        /* Jos kuvia ei ole, lista on tyhjä. */
-        photos: [],
-      };
+          /* Jos kuvia ei ole, lista on tyhjä. */
+          photos: [],
+        };
 
-      /* Pakolliset tiedot tarkistetaan. */
+        /* Pakolliset tiedot tarkistetaan. */
 
-      if (!payload.name || !payload.phone || payload.gdpr !== "yes") {
-        if (formStatus) {
-          formStatus.textContent =
-            "Täytä nimi ja puhelin sekä hyväksy tietojen käsittely.";
+        if (!payload.name || !payload.phone || payload.gdpr !== "yes") {
+          if (formStatus) {
+            formStatus.textContent =
+              "Täytä nimi ja puhelin sekä hyväksy tietojen käsittely.";
+          }
+
+          return;
         }
 
-        return;
-      }
+        /* Lähetyspainike poistetaan hetkeksi käytöstä. */
 
-      /* Lähetyspainike poistetaan hetkeksi käytöstä. */
+        if (submitButton) {
+          submitButton.disabled = true;
 
-      if (submitButton) {
-        submitButton.disabled = true;
+          submitButton.textContent = selectedPhotos.length
+            ? "Kuvia valmistellaan..."
+            : "Lähetetään...";
+        }
 
-        submitButton.textContent = selectedPhotos.length
-          ? "Kuvia valmistellaan..."
-          : "Lähetetään...";
-      }
+        if (formStatus) {
+          formStatus.textContent = "";
+        }
 
-      if (formStatus) {
-        formStatus.textContent = "";
-      }
-
-      try {
         /* Valmistellaan kuvat vain, jos asiakas valitsi kuvia. */
 
         if (selectedPhotos.length) {
@@ -566,20 +608,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
           body: JSON.stringify(payload),
 
-          /* no-cors tarvitaan nykyisessä Apps Script -ratkaisussa. */
+          /* Säilytetään nykyinen yhteys; opaque-vastaus ei vahvista vastaanottoa. */
           mode: "no-cors",
         });
 
-        /* Lähetys tarkistetaan Google Sheetsistä, Telegramista ja Drivestä. */
-
-        /* Lähetys onnistui. */
-
+        /* Normaali lähetyspolku valmistui ilman havaittavaa virhettä.
+           no-cors ei silti mahdollista palvelimen vastauksen lukemista. */
         form.reset();
-
         openSuccessModal();
 
         if (formStatus) {
-          formStatus.textContent = "Kiitos! Viestisi on lähetetty.";
+          formStatus.textContent =
+            "Yhteydenottopyyntösi on lähetetty. Otamme sinuun yhteyttä mahdollisimman pian.";
         }
       } catch (error) {
         /* Virhe lähetyksessä. */
@@ -596,7 +636,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (formStatus) {
           formStatus.textContent =
-            "Viestin lähetys epäonnistui. Yritä uudelleen tai ota yhteyttä puhelimitse.";
+            "Viestin lähetys epäonnistui. Yritä uudelleen tai lähetä viesti WhatsAppissa.";
         }
       } finally {
         /* Palautetaan lähetyspainike normaaliksi. */
@@ -605,13 +645,13 @@ document.addEventListener("DOMContentLoaded", () => {
           submitButton.disabled = false;
 
           submitButton.innerHTML =
-            'Lähetä viesti <span aria-hidden="true">→</span>';
+            'Pyydä yhteydenotto <span aria-hidden="true">→</span>';
         }
       }
     });
   }
 
-  /* Kiitos-ikkuna. */
+  /* Lähetyksen tila. */
 
   const successModal = document.getElementById("successModal");
 
@@ -624,6 +664,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     returnFocus = submitButton || document.activeElement;
 
+    successModal.inert = false;
     successModal.classList.add("is-open");
     successModal.setAttribute("aria-hidden", "false");
 
@@ -643,6 +684,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    successModal.inert = true;
     successModal.classList.remove("is-open");
     successModal.setAttribute("aria-hidden", "true");
 
@@ -672,6 +714,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     trapFocus(event, successModal);
   });
+
+  /* Lomake otetaan käyttöön vasta, kun lähetyksen käsittelijät ovat valmiina. */
+  if (form) form.inert = false;
 
   /* Evästevalinta. */
 

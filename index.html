@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="fi">
   <head>
     <meta charset="UTF-8" />
@@ -110,11 +111,9 @@
     <header class="siteHeader" id="top">
       <div class="container siteHeader__inner">
         <a class="logo" href="#top" aria-label="KotiAsuminen – Etusivu">
-          <img
+          <img width="2172" height="724"
             src="./img/logo1.png"
             alt="KotiAsuminen – Yhdessä me elämme"
-            width="2048"
-            height="768"
             decoding="async"
           />
         </a>
@@ -174,11 +173,9 @@
           href="#top"
           aria-label="KotiAsuminen – Etusivu"
         >
-          <img
+          <img width="2172" height="724"
             src="./img/logo1.png"
             alt="KotiAsuminen – Yhdessä me elämme"
-            width="2048"
-            height="768"
             decoding="async"
           />
         </a>
@@ -526,7 +523,7 @@
                 </ul>
 
                 <a class="serviceCard__link" href="#yhteys">
-                  Ota yhteyttä
+                  Pyydä yhteydenotto
                   <span aria-hidden="true">→</span>
                 </a>
               </div>
@@ -808,36 +805,37 @@
           <div class="contactInfo">
             <p class="eyebrow">OLEMME TÄÄLLÄ SINUA VARTEN</p>
 
-            <h2>Miten voimme auttaa?</h2>
+            <h2>Pyydä yhteydenotto</h2>
 
             <p>
-              Kerro lyhyesti, millaista apua tarvitset. Otamme sinuun yhteyttä
+              Valitse tarvitsemasi apu ja jätä yhteystietosi. Otamme sinuun yhteyttä
               mahdollisimman pian.
             </p>
 
-            <div class="contactDetails">
-              <p>
-                <strong>Puhelin:</strong>
-                <a href="tel:+358408108784">040 810 8784</a>
-              </p>
-              <p>
-                <strong>Sähköposti:</strong>
-                <a href="mailto:kotiasuminen@gmail.com">kotiasuminen@gmail.com</a>
-              </p>
-            </div>
-
-            <a
-              class="button button--pink"
-              href="https://wa.me/358408108784"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ota yhteyttä WhatsAppissa
-            </a>
           </div>
 
-          <form class="contactForm" id="contactForm">
+          <noscript>
+            <p>Voit pyytää yhteydenottoa
+              <a href="https://wa.me/358408108784" target="_blank" rel="noopener noreferrer">WhatsAppissa</a>
+              tai <a href="mailto:kotiasuminen@gmail.com">sähköpostitse</a>.
+            </p>
+          </noscript>
+          <form class="contactForm" id="contactForm" method="post" inert>
             <div class="formGrid">
+              <fieldset class="fieldset formFull" id="servicesGroup" aria-describedby="servicesHelp">
+                <legend class="fieldset__legend">Millaista apua tarvitset? *</legend>
+                <p id="servicesHelp">Voit valita yhden tai useamman.</p>
+                <p id="servicesError" class="fieldError" hidden>Valitse vähintään yksi palvelu.</p>
+                <div class="checks">
+                  <label class="check"><input type="checkbox" name="services" value="Kotisiivous" /><span>Kotisiivous</span></label>
+                  <label class="check"><input type="checkbox" name="services" value="Ikkunanpesu" /><span>Ikkunanpesu</span></label>
+                  <label class="check"><input type="checkbox" name="services" value="Muuttosiivous" /><span>Muuttosiivous</span></label>
+                  <label class="check"><input type="checkbox" name="services" value="Järjestelyapu" /><span>Järjestelyapu</span></label>
+                  <label class="check"><input type="checkbox" name="services" value="Henkilökohtainen apu" /><span>Henkilökohtainen apu</span></label>
+                  <label class="check"><input type="checkbox" name="services" value="Asiointi- tai saattamisapu" /><span>Asiointi- tai saattamisapu</span></label>
+                  <label class="check"><input type="checkbox" name="services" value="Muu apu" /><span>Muu apu</span></label>
+                </div>
+              </fieldset>
               <label>
                 <span>Nimi *</span>
 
@@ -845,7 +843,7 @@
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="Etunimi ja Sukunimi"
+                  placeholder="Nimesi"
                   autocomplete="name"
                   required
                 />
@@ -857,7 +855,6 @@
                 <input
                   type="tel"
                   inputmode="tel"
-                  pattern="[+0-9 ()-]{7,25}"
                   name="phone"
                   id="phone"
                   placeholder="Esim. 040 123 4567"
@@ -867,10 +864,11 @@
               </label>
 
               <label class="formFull">
-                <span>Sähköposti</span>
+                <span>Sähköposti (vapaaehtoinen)</span>
 
                 <input
                   type="email"
+                  inputmode="email"
                   name="email"
                   id="email"
                   placeholder="nimi@esimerkki.fi"
@@ -879,27 +877,27 @@
               </label>
 
               <label class="formFull">
-                <span>Miten voimme auttaa? *</span>
+                <span>Lisätiedot (vapaaehtoinen)</span>
+                <small id="messageHelp">Voit halutessasi kertoa tilanteestasi tarkemmin.</small>
 
                 <textarea
                   name="message"
                   id="message"
-                  rows="5"
-                  placeholder="Kerro lyhyesti, millaista apua tarvitset (esim. perussiivous, henkilökohtainen avustus, asiointiapu...)."
-                  required
+                  rows="3"
+                  aria-describedby="messageHelp"
                 ></textarea>
               </label>
 
               <!-- Asiakas voi lisätä kuvia. -->
 
-              <section
+              <details
                 class="photoUpload formFull"
                 aria-labelledby="photoLabel"
               >
-                <h3 id="photoLabel">Lisää kuvia (vapaaehtoinen)</h3>
+                <summary id="photoLabel">Lisää kuvia (vapaaehtoinen)</summary>
 
                 <p id="photoHelp">
-                  Voit halutessasi liittää kuvia esimerkiksi siivottavasta tai järjesteltävästä kohteesta. Kuvat auttavat meitä arvioimaan työn laajuutta ja hintaa tarkemmin.
+                  Voit liittää kuvia siivottavasta tai järjesteltävästä kohteesta.
                 </p>
 
                 <p id="photoLimit">
@@ -948,7 +946,7 @@
                   role="status"
                   aria-live="polite"
                 ></p>
-              </section>
+              </details>
 
               <!-- Asiakas hyväksyy tietojen käytön. -->
 
@@ -963,7 +961,7 @@
             </div>
 
             <button class="button button--green" type="submit" id="submitBtn">
-              Lähetä viesti
+              Pyydä yhteydenotto
               <span aria-hidden="true">→</span>
             </button>
 
@@ -974,6 +972,13 @@
               aria-live="polite"
             ></p>
           </form>
+          <div class="contactAlternative">
+            <p>Haluatko mieluummin kirjoittaa?</p>
+            <a class="button button--whatsapp" href="https://wa.me/358408108784" target="_blank" rel="noopener noreferrer">
+              <img src="./img/icons/whatsapp.svg" width="21" height="21" alt="" aria-hidden="true" />
+              <span>Lähetä viesti WhatsAppissa</span>
+            </a>
+          </div>
         </div>
       </section>
     </main>
@@ -986,7 +991,7 @@
     <!-- Logo ja lyhyt teksti. -->
     <div class="footerBrand">
       <a href="#top" class="footerLogo" aria-label="KotiAsuminen – Etusivu">
-        <img
+        <img width="2172" height="724"
           src="img/logo1.png"
           alt="KotiAsuminen – Yhdessä me elämme"
         >
@@ -1000,7 +1005,6 @@
       <div class="footerContact">
         <a href="tel:+358408108784">040 810 8784</a>
         <a href="mailto:kotiasuminen@gmail.com">kotiasuminen@gmail.com</a>
-        <span>Y-tunnus: 3594791-5</span>
       </div>
     </div>
 
@@ -1041,7 +1045,7 @@
   <div class="container footerBottomNew">
 
     <p class="footerCopyright">
-      © 2026 KotiAsuminen · Kokkola
+      © 2026 KotiAsuminen · Kokkola · Y-tunnus: 3594791-5
     </p>
 
     <a href="privacy.html" class="footerPrivacy">
@@ -1055,9 +1059,9 @@
   </div>
 </footer>
 
-    <!-- Kiitos-ikkuna näkyy viestin lähetyksen jälkeen. -->
+    <!-- Kiitos-ikkuna näkyy lomakkeen lähetyksen jälkeen. -->
 
-    <div class="modal" id="successModal" aria-hidden="true">
+    <div class="modal" id="successModal" aria-hidden="true" inert>
       <div class="modal__backdrop" data-close></div>
 
       <div
@@ -1075,10 +1079,11 @@
           ×
         </button>
 
-        <h2 class="modal__title" id="successTitle">Kiitos!</h2>
+        <h2 class="modal__title" id="successTitle">Kiitos yhteydenotostasi!</h2>
 
         <p class="modal__text">
-          Viestisi on lähetetty. Otamme yhteyttä mahdollisimman pian.
+          Yhteydenottopyyntösi on lähetetty.
+          Otamme sinuun yhteyttä mahdollisimman pian.
         </p>
 
         <div class="modal__actions">
