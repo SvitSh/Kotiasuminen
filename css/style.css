@@ -1114,7 +1114,7 @@ input[type="checkbox"] {
   max-width: 460px;
   max-height: 90dvh;
   overflow-y: auto;
-  padding: 42px 40px 38px;
+  padding: 64px clamp(20px, 5vw, 40px) 38px;
   text-align: center;
   border-radius: 28px;
   background: var(--white);
@@ -1123,11 +1123,16 @@ input[type="checkbox"] {
   position: absolute;
   top: 12px;
   right: 12px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 22px;
 }
 .modal__title {
+  font-size: clamp(26px, 2.5vw, 30px);
+  line-height: 1.2;
   overflow-wrap: anywhere;
-  hyphens: auto;
-  padding-inline: 24px;
+  hyphens: none;
 }
 /* Evästeet. */
 .cookieBanner {
@@ -1136,9 +1141,9 @@ input[type="checkbox"] {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(550px, calc(100% - 48px));
+  width: min(760px, calc(100% - 48px));
   display: none;
-  padding: 22px;
+  padding: 16px;
   border: 1px solid var(--line);
   border-radius: 18px;
   background: var(--white);
@@ -1147,8 +1152,14 @@ input[type="checkbox"] {
 .cookieBanner.is-visible {
   display: block;
 }
+.cookieBanner__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+}
 .cookieBanner__text {
-  margin-bottom: 14px;
+  margin: 0;
   font-size: 14px;
 }
 .cookieBanner__actions {
@@ -1167,6 +1178,30 @@ input[type="checkbox"] {
 .cookieBanner__actions .cookieBanner__accept {
   background: var(--green);
   color: var(--white);
+}
+@media (max-width: 700px) {
+  .cookieBanner {
+    bottom: 12px;
+    width: calc(100% - 24px);
+    padding: 14px;
+  }
+  .cookieBanner__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .cookieBanner__text {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .cookieBanner__actions {
+    flex-wrap: nowrap;
+  }
+  .cookieBanner__actions button {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 6px 12px;
+    line-height: 1.4;
+  }
 }
 /* Sivun alaosa. */
 .footer {
@@ -1527,17 +1562,6 @@ input[type="checkbox"] {
   }
   .hero__image {
     min-height: 720px;
-  }
-  .modal__dialog {
-    width: min(460px, calc(100vw - 48px));
-    max-width: 460px;
-    padding: 42px 40px 38px;
-    border-radius: 28px;
-  }
-  .modal__dialog h2 {
-    font-size: 42px;
-    line-height: 1.05;
-    margin: 0 0 20px;
   }
   .modal__dialog p {
     font-size: 18px;
@@ -1909,11 +1933,6 @@ input[type="checkbox"] {
   }
   .contactActions .button {
     flex: 1 1 160px;
-  }
-  .cookieBanner {
-    bottom: 12px;
-    width: calc(100% - 24px);
-    padding: 18px;
   }
   .footerMain {
     grid-template-columns: max-content max-content;
